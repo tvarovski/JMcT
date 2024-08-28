@@ -2,9 +2,9 @@
 # Contact: jerzymateusz-twarowski@uiowa.edu, tvarovski1@gmail.com
 import os
 import logging
-from jmcd.nbinom import analyzeSampleForMutationClusters
-from jmcd import csvDataFrameImport, drawSNPMap, getGenomeSize,  time_elapsed
-from jmcd.settings import settings
+from jmct.nbinom import analyzeSampleForMutationClusters
+from jmct import csvDataFrameImport, drawSNPMap, getGenomeSize,  time_elapsed
+from jmct.settings import settings
 import datetime
 
 @time_elapsed

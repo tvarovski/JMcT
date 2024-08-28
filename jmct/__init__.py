@@ -4,4 +4,4 @@
 from .settings import *
 from .decorators import time_elapsed
 from .nbinom import analyzeSampleForMutationClusters
-from .jmcd import csvDataFrameImport, drawSNPMap, getGenomeSize
+from .jmct import csvDataFrameImport, drawSNPMap, getGenomeSize

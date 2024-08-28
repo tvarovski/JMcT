@@ -3,7 +3,7 @@
 
 import scipy.stats
 import pandas as pd
-from jmcd import time_elapsed
+from jmct import time_elapsed
 from functools import cache
 
 @cache

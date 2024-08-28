@@ -9,10 +9,10 @@ import logging
 from typing import Literal
 from numpy import NaN
 from natsort import index_natsorted
-from jmcd.settings import settings
-from jmcd.settings import chromosomes
-from jmcd.settings import am1003_to_roman, am1003_to_numeric, roman_to_numeric, numeric_to_roman, S288C_to_roman, S288C_to_numeric
-from jmcd.settings import chr_centromeres
+from jmct.settings import settings
+from jmct.settings import chromosomes
+from jmct.settings import am1003_to_roman, am1003_to_numeric, roman_to_numeric, numeric_to_roman, S288C_to_roman, S288C_to_numeric
+from jmct.settings import chr_centromeres
 
 def getGenomeSize() -> int:
     """
@@ -343,7 +343,7 @@ def drawSNPMap(
     sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
     fig, ax = plt.subplots()
 
-    from jmcd.settings import chromosomes
+    from jmct.settings import chromosomes
     df_chr_lengths = pd.DataFrame(chromosomes, columns=["chromosome", "end_position"])
     df_chr_lengths = renameChr(df_chr_lengths, "chromosome", "S288C_to_roman")
     df_chr_lengths.plot(kind='barh',legend=False, ax=ax, x="chromosome", y="end_position", fontsize=15, figsize=(20,6), edgecolor="black", linewidth=1, color="#E6E6E6" , zorder=2, title=sample_name, label="Position")
