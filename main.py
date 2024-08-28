@@ -23,11 +23,16 @@ def main():
             mode='w')],
         level=logging.INFO,
         format='%(asctime)s:%(levelname)s:.%(funcName)s: %(message)s')
+    
+    logging.info(f"Starting analysis at {time_now}.")
+    logging.info(f"Settings: {settings}.")
 
     if not os.path.exists(f'figures'):
         os.makedirs(f'figures')
+        logging.info(f"Created figures directory.")
     if not os.path.exists(f'outputs'):
         os.makedirs(f'outputs')
+        logging.info(f"Created outputs directory.")
 
     sample_list = csvDataFrameImport(data_path=DATA_PATH, sample_name_len=settings['sample_name_len'])
     for df_sample in sample_list:
