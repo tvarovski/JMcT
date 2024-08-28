@@ -2,3 +2,4 @@ data/*.csv
 figures/*.png
 logs/*
 outputs/*.csv
+examples/
