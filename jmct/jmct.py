@@ -377,7 +377,7 @@ def drawSNPMap(
 
         except Exception as e:
             try:
-                logging.warning(f"Could not relabel legend. {e}. Removing {e} from legend_order and trying again.")
+                logging.debug(f"Could not relabel legend ({e}). Removing {e} from legend_order and trying again.")
                 #extract the string from the error message
                 e = str(e).split("'")[1]
                 legend_order = [x for x in legend_order if x != str(e)]
