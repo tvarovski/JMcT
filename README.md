@@ -2,7 +2,7 @@
 ## Description
 This repository contains the code for the JMcT project. The project is a spin on the `NIEHS/P-MACD` project, and aims to find mutation clusters among SNVs (A3A mutations) with a better algorithm. It also generates figures showing clustered mutations found at various thresholds.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tvarovski/JMcT/examples/figures/A17_CKDN.png"
+  <img src="https://raw.githubusercontent.com/tvarovski/JMcT/refs/heads/main/examples/figures/A17_CKDN.png"
 </p>
 
 ## Usage
