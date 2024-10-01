@@ -3,6 +3,7 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import seaborn as sns
 import numpy as np
 import logging
@@ -198,6 +199,16 @@ def renameChr(
     df[col_name] = df[col_name].replace(rename_dict)
     return df
 
+def add_legend_to_ax(ax, pval_list, cmap_dict):
+    legend_handles = []
+    for pval in pval_list:
+        color = cmap_dict[pval]
+        patch = mpatches.Patch(color=color, label=f'p<{pval:.1e}')
+        legend_handles.append(patch)
+
+    new_legend = ax.legend(handles=legend_handles, title='Cluster p-value', loc='center right', fontsize=10, title_fontsize=12, bbox_to_anchor=(0.98, 0.5))
+    ax.add_artist(new_legend)
+
 def add_clusters_patch_to_ax(ax, pval_list, pval_dict, sample_name):
 
     #assign a descrete colormap for pvalues from the seaborn's colormap
@@ -243,6 +254,8 @@ def add_clusters_patch_to_ax(ax, pval_list, pval_dict, sample_name):
             ax.add_patch(plt.Rectangle((cluster_start+500, cluster_chromosome_coord), cluster_length+500, 0.5, edgecolor='black', linewidth=0.1, fill=True, facecolor=cmap_dict[pval], alpha=1, zorder=-2))
         pval_counter += 1
 
+    add_legend_to_ax(ax, pval_list, cmap_dict)
+
 def drawSNPMap(
         df_SNVs: pd.DataFrame,
         pval_dict: dict,
@@ -256,24 +269,24 @@ def drawSNPMap(
         "cen": 'Centromere',
         "SPECTRA_STRANDWISE": "Reference Allele",
         "Position": "Position",
-        "G": "G->N",
-        "C": "C->N",
-        "A": "A->N",
-        "T": "T->N",
-        "C_to_T": "C->T",
-        "C_to_A": "C/G->",
-        "C_to_G": "C/G->",
+        "G": "G→N",
+        "C": "C→N",
+        "A": "A→N",
+        "T": "T→N",
+        "C_to_T": "C→T",
+        "C_to_A": "C/G→V/B",
+        "C_to_G": "C/G→V/B",
 
-        "G_to_A": "G->A",
-        "G_to_C": "C/G->",
-        "G_to_T": "C/G->",
+        "G_to_A": "G→A",
+        "G_to_C": "C/G→",
+        "G_to_T": "C/G→",
 
-        'T_to_A': "A/T->N",
-        'T_to_C': "A/T->N",
-        'T_to_G': "A/T->N",
-        'A_to_C': "A/T->N",
-        'A_to_G': "A/T->N",
-        'A_to_T': "A/T->N",
+        'T_to_A': "A/T→N",
+        'T_to_C': "A/T→N",
+        'T_to_G': "A/T→N",
+        'A_to_C': "A/T→N",
+        'A_to_G': "A/T→N",
+        'A_to_T': "A/T→N",
         }  
     markers = {
         'cen': "o",
@@ -385,7 +398,7 @@ def drawSNPMap(
                 logging.warning(f"Cound not relabel legend. {e}.")
                 break
 
-    ax.legend(by_label.values(), by_label.keys(), fontsize=10, loc='lower right', bbox_to_anchor=(0.95, 0.1), title=None)
+    ax.legend(by_label.values(), by_label.keys(), fontsize=10, loc='lower right', bbox_to_anchor=(0.98, 0.1), title=None)
     plt.tight_layout()
 
     if saveMap:
