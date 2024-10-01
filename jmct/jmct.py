@@ -278,8 +278,8 @@ def drawSNPMap(
         "C_to_G": "C/G→V/B",
 
         "G_to_A": "G→A",
-        "G_to_C": "C/G→",
-        "G_to_T": "C/G→",
+        "G_to_C": "C/G→V/B",
+        "G_to_T": "C/G→V/B",
 
         'T_to_A': "A/T→N",
         'T_to_C': "A/T→N",
